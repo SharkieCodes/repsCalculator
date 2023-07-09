@@ -7,11 +7,11 @@ import androidx.room.PrimaryKey;
 public class numberEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int weightNum;
-    private int fatNum;
-    private int muscleNum;
+    private float weightNum;
+    private float fatNum;
+    private float muscleNum;
 
-    public numberEntity(int weightNum, int fatNum, int muscleNum) {
+    public numberEntity(float weightNum, float fatNum, float muscleNum) {
         this.weightNum = weightNum;
         this.fatNum = fatNum;
         this.muscleNum = muscleNum;
@@ -25,27 +25,27 @@ public class numberEntity {
         this.id = id;
     }
 
-    public int getWeightNum() {
+    public float getWeightNum() {
         return weightNum;
     }
 
-    public void setWeightNum(int weightNum) {
+    public void setWeightNum(float weightNum) {
         this.weightNum = weightNum;
     }
 
-    public int getFatNum() {
+    public float getFatNum() {
         return fatNum;
     }
 
-    public void setFatNum(int fatNum) {
+    public void setFatNum(float fatNum) {
         this.fatNum = fatNum;
     }
 
-    public int getMuscleNum() {
+    public float getMuscleNum() {
         return muscleNum;
     }
 
-    public void setMuscleNum(int muscleNum) {
+    public void setMuscleNum(float muscleNum) {
         this.muscleNum = muscleNum;
     }
 }

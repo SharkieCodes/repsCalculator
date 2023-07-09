@@ -1,14 +1,17 @@
 package com.sharkie.repscalculator;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.room.Room;
+
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -21,9 +24,11 @@ public class weight extends AppCompatActivity {
     private TextView displayTextView;
     private List<numberEntity> numbersList;
     private AppDatabase appDatabase;
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.weight);
+
+
 
                 // Initialize views
                 weightInputs = findViewById(R.id.weightInputs);
@@ -34,8 +39,9 @@ public class weight extends AppCompatActivity {
 
                 // Initialize database
                 appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "numbers-database")
-                        .allowMainThreadQueries()
-                        .build();
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
 
                 // Load previously saved numbers
                 numbersList = appDatabase.numberDao().getAll();
@@ -54,9 +60,9 @@ public class weight extends AppCompatActivity {
 
             private void saveNumbers() {
                 // Get the entered numbers from the EditText
-                int weightNum = Integer.parseInt(weightInputs.getText().toString());
-                int fatNum = Integer.parseInt(fatInput.getText().toString());
-                int muscleNum = Integer.parseInt(muscleInput.getText().toString());
+                float weightNum = Float.parseFloat(weightInputs.getText().toString());
+                float fatNum = Float.parseFloat(fatInput.getText().toString());
+                float muscleNum = Float.parseFloat(muscleInput.getText().toString());
 
                 // Create a new NumberEntity object
                 numberEntity numberEntity = new numberEntity(weightNum, fatNum, muscleNum);
@@ -78,13 +84,36 @@ public class weight extends AppCompatActivity {
 
             private void displayNumbers() {
                 StringBuilder builder = new StringBuilder();
-
+                LocalDate currentDate = LocalDate.now();
+                String currentDates = currentDate.format(DateTimeFormatter.ofPattern("MM/dd"));
                 // Append each set of numbers to the StringBuilder
+
+
+
                 for (numberEntity number : numbersList) {
-                    builder.append("Number 1: ").append(number.getWeightNum())
-                            .append(", Number 2: ").append(number.getFatNum())
-                            .append(", Number 3: ").append(number.getMuscleNum())
+
+
+
+                    DecimalFormat df = new DecimalFormat("#.000");
+
+                    float fatNums = number.getFatNum();
+                    float weightNums = number.getWeightNum();
+                    float muscleNums = number.getMuscleNum();
+
+
+                    float fatWeight = (fatNums / 100) * weightNums;
+                    float muscleWeight = (muscleNums / 100) * weightNums;
+
+                    float fatWeightR = Float.valueOf(df.format(fatWeight));
+                    float muscleWeightR = Float.valueOf(df.format(muscleWeight));
+                    builder.append(currentDates + "  -  ")
+                            .append(weightNums).append("kg ")
+                            .append(fatNums).append("% ")
+                            .append(muscleNums).append("% ")
+                            .append(fatWeightR).append("kg ")
+                            .append(muscleWeightR).append("kg")
                             .append("\n");
+
                 }
 
                 // Set the TextView text
