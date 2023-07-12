@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
     <TextView
         android:id="@+id/workoutName"
@@ -11,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Leg Workout"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Incline Bench Press"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="10-12 reps"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/workoutName" />
@@ -53,6 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:text="1 of 5"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +74,8 @@
         android:layout_marginStart="74dp"
         android:layout_marginTop="79dp"
         android:text="Reps:"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="30sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +88,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="18dp"
         android:text="Weight:"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -99,6 +112,9 @@
         android:layout_marginTop="33dp"
         android:layout_marginBottom="50dp"
         android:text="Next"
+        android:backgroundTint="@color/beige"
+        android:backgroundTintMode="screen"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weightInput" />
@@ -111,6 +127,8 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="numberSigned"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/setsCount" />
 
@@ -122,9 +140,10 @@
         android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/repsInput" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

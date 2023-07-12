@@ -4,58 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:foregroundTint="#919191"
     tools:context=".MainActivity">
 
 
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="1098dp"
-        android:layout_height="1867dp"
-        android:layout_marginStart="-100dp"
-        android:layout_marginTop="-500dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/black" />
-
-    <Button
-        android:id="@+id/qrbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="134dp"
-        android:text="QR code"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
+    <ImageButton
         android:id="@+id/workoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="70dp"
-        android:text="Workout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <Button
-        android:id="@+id/weightButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="60dp"
-        android:text="Weight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="250dp"
+        android:background="@color/beige"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded"
+        app:srcCompat="@drawable/workoutlogo"
+        tools:srcCompat="@drawable/workoutlogo" />
+
+    <ImageButton
+        android:id="@+id/weightButton"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/beige"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/weightlogo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
