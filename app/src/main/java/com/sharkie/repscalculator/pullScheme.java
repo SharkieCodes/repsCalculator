@@ -84,7 +84,7 @@ public class pullScheme extends AppCompatActivity {
                 exerciseName.setText("Lat pulldown wide grip");
                 exerciseGif.setImageResource(R.drawable.latpulldown);
                 repsAmount.setText("10-12");
-                setsCount.setText("1 of 5");
+                setsCount.setText("1 of 3");
                 textView6.setVisibility(View.VISIBLE);
                 textView7.setVisibility(View.VISIBLE);
                 repsInput.setVisibility(View.VISIBLE);
@@ -117,7 +117,7 @@ public class pullScheme extends AppCompatActivity {
                         else{
                                 weight2 = weight1;
                         }
-                        setsCount.setText("2 of 5");
+                        setsCount.setText("2 of 3");
                         weightInput.setText(String.valueOf(weight2));
 
                         nextSet.setOnClickListener(view1 -> {
@@ -145,7 +145,7 @@ public class pullScheme extends AppCompatActivity {
                                 else{
                                         weight3 = weight2;
                                 }
-                                setsCount.setText("3 of 5");
+                                setsCount.setText("3 of 3");
                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -174,41 +174,12 @@ public class pullScheme extends AppCompatActivity {
                                         else{
                                                 weight4 = weight3;
                                         }
-                                        setsCount.setText("4 of 5");
-                                        weightInput.setText(String.valueOf(weight4));
 
-                                        nextSet.setOnClickListener(view111 -> {
-                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                        weightInput.setError("Fill in the weight you used.");
-                                                        return;
-                                                }
-                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                        return;
-                                                }
-
-                                                weightString = String.valueOf(weightInput.getText());
-                                                weight4 = Float.parseFloat(weightString);
-                                                repsString = String.valueOf(repsInput.getText());
-                                                reps = Integer.parseInt(repsString);
-
-                                                if (reps > 12) {
-                                                        weight5 = (float) (weight4 + 2.5);
-                                                }
-
-                                                else if (reps < 10) {
-                                                        weight5 = (float) (weight4 - 2.5);
-                                                }
-                                                else {
-                                                        weight5 = weight4;
-                                                }
-                                                setsCount.setText("5 of 5");
-                                                weightInput.setText(String.valueOf(weight5));
                                                 nextSet.setVisibility(View.INVISIBLE);
                                                 nextExercise.setVisibility(View.VISIBLE);
 
                                                 nextExercise.setOnClickListener(view1111 -> {
-                                                        float[] weightArray = {weight1, weight2, weight3, weight4, weight5, latmax};
+                                                        float[] weightArray = {weight1, weight2, weight3, weight4, latmax};
                                                         latmax = 0;
                                                         for (float v : weightArray) {
                                                                 latmax = Math.max(latmax, v);
@@ -221,13 +192,13 @@ public class pullScheme extends AppCompatActivity {
 
                                 });
                         });
-                });}
+                };
 
                         public void row(){
                                 exerciseName.setText("Row - pulley machine");
                                 exerciseGif.setImageResource(R.drawable.rowweight);
                                 repsAmount.setText("10-12");
-                                setsCount.setText("1 of 5");
+                                setsCount.setText("1 of 3");
                                 textView6.setVisibility(View.VISIBLE);
                                 textView7.setVisibility(View.VISIBLE);
                                 repsInput.setVisibility(View.VISIBLE);
@@ -268,7 +239,7 @@ public class pullScheme extends AppCompatActivity {
                                         else {
                                                 weight2 = weight1;
                                         }
-                                        setsCount.setText("2 of 5");
+                                        setsCount.setText("2 of 3");
                                         weightInput.setText(String.valueOf(weight2));
 
                                         nextSet.setOnClickListener(view1 -> {
@@ -304,7 +275,7 @@ public class pullScheme extends AppCompatActivity {
                                                 else {
                                                         weight3 = weight2;
                                                 }
-                                                setsCount.setText("3 of 5");
+                                                setsCount.setText("3 of 3");
                                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -341,49 +312,12 @@ public class pullScheme extends AppCompatActivity {
                                                         else {
                                                                 weight4 = weight3;
                                                         }
-                                                        setsCount.setText("4 of 5");
-                                                        weightInput.setText(String.valueOf(weight4));
 
-                                                        nextSet.setOnClickListener(view111 -> {
-                                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                        weightInput.setError("Fill in the weight you used.");
-                                                                        return;
-                                                                }
-                                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                                        return;
-                                                                }
-
-                                                                weightString = String.valueOf(weightInput.getText());
-                                                                weight4 = Float.parseFloat(weightString);
-                                                                repsString = String.valueOf(repsInput.getText());
-                                                                reps = Integer.parseInt(repsString);
-
-                                                                if (reps > 12 && weight4 >=10) {
-                                                                        weight5 = (float) (weight4 + 2);
-                                                                }
-
-                                                                else  if (reps < 10 && weight4 >=12) {
-                                                                        weight5 = (float) (weight4 - 2);
-                                                                }
-
-                                                                else  if (reps > 12 && weight4 <10){
-                                                                        weight5 = (float) (weight4 + 1);
-                                                                }
-
-                                                                else if (reps < 10 && weight4 <= 10){
-                                                                        weight5 = (float) (weight4 - 1);
-                                                                }
-                                                                else {
-                                                                        weight5 = weight4;
-                                                                }
-                                                                setsCount.setText("5 of 5");
-                                                                weightInput.setText(String.valueOf(weight5));
                                                                 nextSet.setVisibility(View.INVISIBLE);
                                                                 nextExercise.setVisibility(View.VISIBLE);
 
                                                                 nextExercise.setOnClickListener(view1111 -> {
-                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, weight5, rowmax};
+                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, rowmax};
                                                                         rowmax = 0;
                                                                         for (float v : weightArray) {
                                                                                 rowmax = Math.max(rowmax, v);
@@ -397,13 +331,13 @@ public class pullScheme extends AppCompatActivity {
 
                                                 });
                                         });
-                });}
+                };
 
                         public void horRow(){
                                 exerciseName.setText("Horizontal row machine");
                                 exerciseGif.setImageResource(R.drawable.horizontalrow);
                                 repsAmount.setText("10-12");
-                                setsCount.setText("1 of 5");
+                                setsCount.setText("1 of 3");
                                 textView6.setVisibility(View.VISIBLE);
                                 textView7.setVisibility(View.VISIBLE);
                                 repsInput.setVisibility(View.VISIBLE);
@@ -436,7 +370,7 @@ public class pullScheme extends AppCompatActivity {
                                         else {
                                                 weight2 = weight1;
                                         }
-                                        setsCount.setText("2 of 5");
+                                        setsCount.setText("2 of 3");
                                         weightInput.setText(String.valueOf(weight2));
 
                                         nextSet.setOnClickListener(view1 -> {
@@ -464,7 +398,7 @@ public class pullScheme extends AppCompatActivity {
                                                 else {
                                                         weight3 = weight2;
                                                 }
-                                                setsCount.setText("3 of 5");
+                                                setsCount.setText("3 of 3");
                                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -493,41 +427,12 @@ public class pullScheme extends AppCompatActivity {
                                                         else {
                                                                 weight4 = weight3;
                                                         }
-                                                        setsCount.setText("4 of 5");
-                                                        weightInput.setText(String.valueOf(weight4));
 
-                                                        nextSet.setOnClickListener(view111 -> {
-                                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                        weightInput.setError("Fill in the weight you used.");
-                                                                        return;
-                                                                }
-                                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                                        return;
-                                                                }
-
-                                                                weightString = String.valueOf(weightInput.getText());
-                                                                weight4 = Float.parseFloat(weightString);
-                                                                repsString = String.valueOf(repsInput.getText());
-                                                                reps = Integer.parseInt(repsString);
-
-                                                                if (reps > 12) {
-                                                                        weight5 = (float) (weight4 + 5);
-                                                                }
-
-                                                                else  if (reps < 10) {
-                                                                        weight5 = (float) (weight4 - 5);
-                                                                }
-                                                                else{
-                                                                        weight5 = weight4;
-                                                                }
-                                                                setsCount.setText("5 of 5");
-                                                                weightInput.setText(String.valueOf(weight5));
                                                                 nextSet.setVisibility(View.INVISIBLE);
                                                                 nextExercise.setVisibility(View.VISIBLE);
 
                                                                 nextExercise.setOnClickListener(view1111 -> {
-                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, weight5, horrowmax};
+                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, horrowmax};
                                                                         horrowmax = 0;
                                                                         for (float v : weightArray) {
                                                                                 horrowmax = Math.max(horrowmax, v);
@@ -540,13 +445,13 @@ public class pullScheme extends AppCompatActivity {
 
                                                 });
                                         });
-                });}
+                };
 
                         public void bentRow(){
                                 exerciseName.setText("Bent-over row");
                                 exerciseGif.setImageResource(R.drawable.bentoverrow);
                                 repsAmount.setText("10-12");
-                                setsCount.setText("1 of 5");
+                                setsCount.setText("1 of 3");
                                 textView6.setVisibility(View.VISIBLE);
                                 textView7.setVisibility(View.VISIBLE);
                                 repsInput.setVisibility(View.VISIBLE);
@@ -587,7 +492,7 @@ public class pullScheme extends AppCompatActivity {
                                         else {
                                                 weight2 = weight1;
                                         }
-                                        setsCount.setText("2 of 5");
+                                        setsCount.setText("2 of 3");
                                         weightInput.setText(String.valueOf(weight2));
 
                                         nextSet.setOnClickListener(view1 -> {
@@ -623,7 +528,7 @@ public class pullScheme extends AppCompatActivity {
                                                 else {
                                                         weight3 = weight2;
                                                 }
-                                                setsCount.setText("3 of 5");
+                                                setsCount.setText("3 of 3");
                                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -660,49 +565,12 @@ public class pullScheme extends AppCompatActivity {
                                                         else {
                                                                 weight4 = weight3;
                                                         }
-                                                        setsCount.setText("4 of 5");
-                                                        weightInput.setText(String.valueOf(weight4));
 
-                                                        nextSet.setOnClickListener(view111 -> {
-                                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                        weightInput.setError("Fill in the weight you used.");
-                                                                        return;
-                                                                }
-                                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                                        return;
-                                                                }
-
-                                                                weightString = String.valueOf(weightInput.getText());
-                                                                weight4 = Float.parseFloat(weightString);
-                                                                repsString = String.valueOf(repsInput.getText());
-                                                                reps = Integer.parseInt(repsString);
-
-                                                                if (reps > 12 && weight4 >=10) {
-                                                                        weight5 = (float) (weight4 + 2);
-                                                                }
-
-                                                                else  if (reps < 10 && weight4 >=12) {
-                                                                        weight5 = (float) (weight4 - 2);
-                                                                }
-
-                                                                else   if (reps > 12 && weight4 <10){
-                                                                        weight5 = (float) (weight4 + 1);
-                                                                }
-
-                                                                else  if (reps < 10 && weight4 <= 10){
-                                                                        weight5 = (float) (weight4 - 1);
-                                                                }
-                                                                else {
-                                                                        weight5 = weight4;
-                                                                }
-                                                                setsCount.setText("5 of 5");
-                                                                weightInput.setText(String.valueOf(weight5));
                                                                 nextSet.setVisibility(View.INVISIBLE);
                                                                 nextExercise.setVisibility(View.VISIBLE);
 
                                                                 nextExercise.setOnClickListener(view1111 -> {
-                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, weight5, bentrowmax};
+                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, bentrowmax};
                                                                         bentrowmax = 0;
                                                                         for (float v : weightArray) {
                                                                                 bentrowmax = Math.max(bentrowmax, v);
@@ -715,14 +583,14 @@ public class pullScheme extends AppCompatActivity {
 
                                                 });
                                         });
-                                });
-                                }
+                                };
+
 
                                 public void bentFly(){
                                         exerciseName.setText("Bent-over reverse fly");
                                         exerciseGif.setImageResource(R.drawable.reversefly);
                                         repsAmount.setText("10-12");
-                                        setsCount.setText("1 of 5");
+                                        setsCount.setText("1 of 3");
                                         textView6.setVisibility(View.VISIBLE);
                                         textView7.setVisibility(View.VISIBLE);
                                         repsInput.setVisibility(View.VISIBLE);
@@ -755,7 +623,7 @@ public class pullScheme extends AppCompatActivity {
                                                 else {
                                                         weight2 = weight1;
                                                 }
-                                                setsCount.setText("2 of 5");
+                                                setsCount.setText("2 of 3");
                                                 weightInput.setText(String.valueOf(weight2));
 
                                                 nextSet.setOnClickListener(view1 -> {
@@ -783,7 +651,7 @@ public class pullScheme extends AppCompatActivity {
                                                         else {
                                                                 weight3 = weight2;
                                                         }
-                                                        setsCount.setText("3 of 5");
+                                                        setsCount.setText("3 of 3");
                                                         weightInput.setText(String.valueOf(weight3));
 
 
@@ -812,41 +680,12 @@ public class pullScheme extends AppCompatActivity {
                                                                 else {
                                                                         weight4 = weight3;
                                                                 }
-                                                                setsCount.setText("4 of 5");
-                                                                weightInput.setText(String.valueOf(weight4));
 
-                                                                nextSet.setOnClickListener(view111 -> {
-                                                                        if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                                weightInput.setError("Fill in the weight you used.");
-                                                                                return;
-                                                                        }
-                                                                        if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                                repsInput.setError("Fill in the amount of reps you did");
-                                                                                return;
-                                                                        }
-
-                                                                        weightString = String.valueOf(weightInput.getText());
-                                                                        weight4 = Float.parseFloat(weightString);
-                                                                        repsString = String.valueOf(repsInput.getText());
-                                                                        reps = Integer.parseInt(repsString);
-
-                                                                        if (reps > 12) {
-                                                                                weight5 = (float) (weight4 + 5);
-                                                                        }
-
-                                                                        else  if (reps < 10) {
-                                                                                weight5 = (float) (weight4 - 5);
-                                                                        }
-                                                                        else{
-                                                                                weight5 = weight4;
-                                                                        }
-                                                                        setsCount.setText("5 of 5");
-                                                                        weightInput.setText(String.valueOf(weight5));
                                                                         nextSet.setVisibility(View.INVISIBLE);
                                                                         nextExercise.setVisibility(View.VISIBLE);
 
                                                                         nextExercise.setOnClickListener(view1111 -> {
-                                                                                float[] weightArray = {weight1, weight2, weight3, weight4, weight5, bentflymax};
+                                                                                float[] weightArray = {weight1, weight2, weight3, weight4, bentflymax};
                                                                                 bentflymax = 0;
                                                                                 for (float v : weightArray) {
                                                                                         bentflymax = Math.max(bentflymax, v);
@@ -859,12 +698,12 @@ public class pullScheme extends AppCompatActivity {
 
                                                         });
                                                 });
-                                        });}
+                                        };
                                         public void bicepCurl(){
                                                 exerciseName.setText("Bicep curl");
                                                 exerciseGif.setImageResource(R.drawable.bicepcurl);
                                                 repsAmount.setText("10-12");
-                                                setsCount.setText("1 of 5");
+                                                setsCount.setText("1 of 3");
                                                 textView6.setVisibility(View.VISIBLE);
                                                 textView7.setVisibility(View.VISIBLE);
                                                 repsInput.setVisibility(View.VISIBLE);
@@ -905,7 +744,7 @@ public class pullScheme extends AppCompatActivity {
                                                         else {
                                                                 weight2 = weight1;
                                                         }
-                                                        setsCount.setText("2 of 5");
+                                                        setsCount.setText("2 of 3");
                                                         weightInput.setText(String.valueOf(weight2));
 
                                                         nextSet.setOnClickListener(view1 -> {
@@ -941,7 +780,7 @@ public class pullScheme extends AppCompatActivity {
                                                                 else {
                                                                         weight3 = weight2;
                                                                 }
-                                                                setsCount.setText("3 of 5");
+                                                                setsCount.setText("3 of 3");
                                                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -978,49 +817,12 @@ public class pullScheme extends AppCompatActivity {
                                                                         else {
                                                                                 weight4 = weight3;
                                                                         }
-                                                                        setsCount.setText("4 of 5");
-                                                                        weightInput.setText(String.valueOf(weight4));
 
-                                                                        nextSet.setOnClickListener(view111 -> {
-                                                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                                        weightInput.setError("Fill in the weight you used.");
-                                                                                        return;
-                                                                                }
-                                                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                                                        return;
-                                                                                }
-
-                                                                                weightString = String.valueOf(weightInput.getText());
-                                                                                weight4 = Float.parseFloat(weightString);
-                                                                                repsString = String.valueOf(repsInput.getText());
-                                                                                reps = Integer.parseInt(repsString);
-
-                                                                                if (reps > 12 && weight4 >=10) {
-                                                                                        weight5 = (float) (weight4 + 2);
-                                                                                }
-
-                                                                                else   if (reps < 10 && weight4 >=12) {
-                                                                                        weight5 = (float) (weight4 - 2);
-                                                                                }
-
-                                                                                else   if (reps > 12 && weight4 <10){
-                                                                                        weight5 = (float) (weight4 + 1);
-                                                                                }
-
-                                                                                else   if (reps < 10 && weight4 <= 10){
-                                                                                        weight5 = (float) (weight4 - 1);
-                                                                                }
-                                                                                else {
-                                                                                        weight5 = weight4;
-                                                                                }
-                                                                                setsCount.setText("5 of 5");
-                                                                                weightInput.setText(String.valueOf(weight5));
                                                                                 nextSet.setVisibility(View.INVISIBLE);
                                                                                 nextExercise.setVisibility(View.VISIBLE);
 
                                                                                 nextExercise.setOnClickListener(view1111 -> {
-                                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, weight5, curlmax};
+                                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, curlmax};
                                                                                         curlmax = 0;
                                                                                         for (float v : weightArray) {
                                                                                                 curlmax = Math.max(curlmax, v);
@@ -1033,12 +835,12 @@ public class pullScheme extends AppCompatActivity {
 
                                                                 });
                                                         });
-                                });}
+                                };
                                         public void inclineCurl(){
                                                 exerciseName.setText("Incline curl");
                                                 exerciseGif.setImageResource(R.drawable.inclinedbcurl);
                                                 repsAmount.setText("10-12");
-                                                setsCount.setText("1 of 5");
+                                                setsCount.setText("1 of 3");
                                                 textView6.setVisibility(View.VISIBLE);
                                                 textView7.setVisibility(View.VISIBLE);
                                                 repsInput.setVisibility(View.VISIBLE);
@@ -1079,7 +881,7 @@ public class pullScheme extends AppCompatActivity {
                                                         else {
                                                                 weight2 = weight1;
                                                         }
-                                                        setsCount.setText("2 of 5");
+                                                        setsCount.setText("2 of 3");
                                                         weightInput.setText(String.valueOf(weight2));
 
                                                         nextSet.setOnClickListener(view1 -> {
@@ -1115,7 +917,7 @@ public class pullScheme extends AppCompatActivity {
                                                                 else {
                                                                         weight3 = weight2;
                                                                 }
-                                                                setsCount.setText("3 of 5");
+                                                                setsCount.setText("3 of 3");
                                                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -1152,49 +954,12 @@ public class pullScheme extends AppCompatActivity {
                                                                         else {
                                                                                 weight4 = weight3;
                                                                         }
-                                                                        setsCount.setText("4 of 5");
-                                                                        weightInput.setText(String.valueOf(weight4));
 
-                                                                        nextSet.setOnClickListener(view111 -> {
-                                                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                                        weightInput.setError("Fill in the weight you used.");
-                                                                                        return;
-                                                                                }
-                                                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                                                        return;
-                                                                                }
-
-                                                                                weightString = String.valueOf(weightInput.getText());
-                                                                                weight4 = Float.parseFloat(weightString);
-                                                                                repsString = String.valueOf(repsInput.getText());
-                                                                                reps = Integer.parseInt(repsString);
-
-                                                                                if (reps > 12 && weight4 >=10) {
-                                                                                        weight5 = (float) (weight4 + 2);
-                                                                                }
-
-                                                                                else  if (reps < 10 && weight4 >=12) {
-                                                                                        weight5 = (float) (weight4 - 2);
-                                                                                }
-
-                                                                                else  if (reps > 12 && weight4 <10){
-                                                                                        weight5 = (float) (weight4 + 1);
-                                                                                }
-
-                                                                                else if (reps < 10 && weight4 <= 10){
-                                                                                        weight5 = (float) (weight4 - 1);
-                                                                                }
-                                                                                else {
-                                                                                        weight5 = weight4;
-                                                                                }
-                                                                                setsCount.setText("5 of 5");
-                                                                                weightInput.setText(String.valueOf(weight5));
                                                                                 nextSet.setVisibility(View.INVISIBLE);
                                                                                 nextExercise.setVisibility(View.VISIBLE);
 
                                                                                 nextExercise.setOnClickListener(view1111 -> {
-                                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, weight5, incmax};
+                                                                                        float[] weightArray = {weight1, weight2, weight3, weight4, incmax};
                                                                                         incmax = 0;
                                                                                         for (float v : weightArray) {
                                                                                                 incmax = Math.max(incmax, v);
@@ -1207,12 +972,12 @@ public class pullScheme extends AppCompatActivity {
 
                                                                 });
                                                         });
-                                });}
+                                };
                                         public void preach(){
                                                 exerciseName.setText("Preacher curl");
                                                 exerciseGif.setImageResource(R.drawable.preachercurl);
                                                 repsAmount.setText("10-12");
-                                                setsCount.setText("1 of 5");
+                                                setsCount.setText("1 of 3");
                                                 textView6.setVisibility(View.VISIBLE);
                                                 textView7.setVisibility(View.VISIBLE);
                                                 repsInput.setVisibility(View.VISIBLE);
@@ -1245,7 +1010,7 @@ public class pullScheme extends AppCompatActivity {
                                                         else{
                                                                 weight2 = weight1;
                                                         }
-                                                        setsCount.setText("2 of 5");
+                                                        setsCount.setText("2 of 3");
                                                         weightInput.setText(String.valueOf(weight2));
 
                                                         nextSet.setOnClickListener(view1 -> {
@@ -1273,7 +1038,7 @@ public class pullScheme extends AppCompatActivity {
                                                                 else{
                                                                         weight3 = weight2;
                                                                 }
-                                                                setsCount.setText("3 of 5");
+                                                                setsCount.setText("3 of 3");
                                                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -1302,36 +1067,7 @@ public class pullScheme extends AppCompatActivity {
                                                                         else{
                                                                                 weight4 = weight3;
                                                                         }
-                                                                        setsCount.setText("4 of 5");
-                                                                        weightInput.setText(String.valueOf(weight4));
 
-                                                                        nextSet.setOnClickListener(view111 -> {
-                                                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                                                        weightInput.setError("Fill in the weight you used.");
-                                                                                        return;
-                                                                                }
-                                                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                                                        return;
-                                                                                }
-
-                                                                                weightString = String.valueOf(weightInput.getText());
-                                                                                weight4 = Float.parseFloat(weightString);
-                                                                                repsString = String.valueOf(repsInput.getText());
-                                                                                reps = Integer.parseInt(repsString);
-
-                                                                                if (reps > 12) {
-                                                                                        weight5 = (float) (weight4 + 2.5);
-                                                                                }
-
-                                                                                else if (reps < 10) {
-                                                                                        weight5 = (float) (weight4 - 2.5);
-                                                                                }
-                                                                                else {
-                                                                                        weight5 = weight4;
-                                                                                }
-                                                                                setsCount.setText("5 of 5");
-                                                                                weightInput.setText(String.valueOf(weight5));
                                                                                 nextSet.setVisibility(View.INVISIBLE);
                                                                                 nextExercise.setVisibility(View.VISIBLE);
 
@@ -1349,13 +1085,13 @@ public class pullScheme extends AppCompatActivity {
 
                                                                 });
                                                         });
-                                });}
+                                };
 
         public void shrugs(){
                 exerciseName.setText("Shrugs");
                 exerciseGif.setImageResource(R.drawable.shrugs);
                 repsAmount.setText("10-12");
-                setsCount.setText("1 of 5");
+                setsCount.setText("1 of 3");
                 textView6.setVisibility(View.VISIBLE);
                 textView7.setVisibility(View.VISIBLE);
                 repsInput.setVisibility(View.VISIBLE);
@@ -1396,7 +1132,7 @@ public class pullScheme extends AppCompatActivity {
                         else {
                                 weight2 = weight1;
                         }
-                        setsCount.setText("2 of 5");
+                        setsCount.setText("2 of 3");
                         weightInput.setText(String.valueOf(weight2));
 
                         nextSet.setOnClickListener(view1 -> {
@@ -1432,7 +1168,7 @@ public class pullScheme extends AppCompatActivity {
                                 else {
                                         weight3 = weight2;
                                 }
-                                setsCount.setText("3 of 5");
+                                setsCount.setText("3 of 3");
                                 weightInput.setText(String.valueOf(weight3));
 
 
@@ -1469,44 +1205,7 @@ public class pullScheme extends AppCompatActivity {
                                         else {
                                                 weight4 = weight3;
                                         }
-                                        setsCount.setText("4 of 5");
-                                        weightInput.setText(String.valueOf(weight4));
 
-                                        nextSet.setOnClickListener(view111 -> {
-                                                if (TextUtils.isEmpty(weightInput.getText().toString())) {
-                                                        weightInput.setError("Fill in the weight you used.");
-                                                        return;
-                                                }
-                                                if (TextUtils.isEmpty(repsInput.getText().toString())) {
-                                                        repsInput.setError("Fill in the amount of reps you did");
-                                                        return;
-                                                }
-
-                                                weightString = String.valueOf(weightInput.getText());
-                                                weight4 = Float.parseFloat(weightString);
-                                                repsString = String.valueOf(repsInput.getText());
-                                                reps = Integer.parseInt(repsString);
-
-                                                if (reps > 12 && weight4 >=10) {
-                                                        weight5 = (float) (weight4 + 2);
-                                                }
-
-                                                else  if (reps < 10 && weight4 >=12) {
-                                                        weight5 = (float) (weight4 - 2);
-                                                }
-
-                                                else   if (reps > 12 && weight4 <10){
-                                                        weight5 = (float) (weight4 + 1);
-                                                }
-
-                                                else  if (reps < 10 && weight4 <= 10){
-                                                        weight5 = (float) (weight4 - 1);
-                                                }
-                                                else {
-                                                        weight5 = weight4;
-                                                }
-                                                setsCount.setText("5 of 5");
-                                                weightInput.setText(String.valueOf(weight5));
                                                 nextSet.setVisibility(View.INVISIBLE);
                                                 nextExercise.setVisibility(View.VISIBLE);
 
@@ -1524,8 +1223,8 @@ public class pullScheme extends AppCompatActivity {
 
                                 });
                         });
-                });
-        }
+                };
+
                                         public void running(){
                                                 exerciseName.setText("threadmill");
                                                 exerciseGif.setImageResource(R.drawable.running);
