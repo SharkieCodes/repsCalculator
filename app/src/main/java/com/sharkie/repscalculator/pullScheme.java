@@ -57,8 +57,8 @@ public class pullScheme extends AppCompatActivity {
                 textView7.setVisibility(View.VISIBLE);
                 repsInput.setVisibility(View.VISIBLE);
                 weightInput.setVisibility(View.VISIBLE);
-                nextExercise.setVisibility(View.VISIBLE);
-                nextSet.setVisibility(View.INVISIBLE);
+                nextExercise.setVisibility(View.INVISIBLE);
+
 
 
                 loaddata();
@@ -76,7 +76,7 @@ public class pullScheme extends AppCompatActivity {
                 repsInput.setVisibility(View.INVISIBLE);
                 weightInput.setVisibility(View.INVISIBLE);
 
-                nextExercise.setOnClickListener(view -> latPulldown());
+                nextSet.setOnClickListener(view -> latPulldown());
 
         }
 
@@ -175,10 +175,9 @@ public class pullScheme extends AppCompatActivity {
                                                 weight4 = weight3;
                                         }
 
-                                                nextSet.setVisibility(View.INVISIBLE);
-                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                nextExercise.setOnClickListener(view1111 -> {
+
+
                                                         float[] weightArray = {weight1, weight2, weight3, weight4, latmax};
                                                         latmax = 0;
                                                         for (float v : weightArray) {
@@ -186,7 +185,7 @@ public class pullScheme extends AppCompatActivity {
                                                         }
                                                         row();
 
-                                                });
+
 
                                         });
 
@@ -313,10 +312,9 @@ public class pullScheme extends AppCompatActivity {
                                                                 weight4 = weight3;
                                                         }
 
-                                                                nextSet.setVisibility(View.INVISIBLE);
-                                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                                nextExercise.setOnClickListener(view1111 -> {
+
+
                                                                         float[] weightArray = {weight1, weight2, weight3, weight4, rowmax};
                                                                         rowmax = 0;
                                                                         for (float v : weightArray) {
@@ -325,7 +323,7 @@ public class pullScheme extends AppCompatActivity {
                                                                         horRow();
 
 
-                                                                });
+
 
                                                         });
 
@@ -428,10 +426,7 @@ public class pullScheme extends AppCompatActivity {
                                                                 weight4 = weight3;
                                                         }
 
-                                                                nextSet.setVisibility(View.INVISIBLE);
-                                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                                nextExercise.setOnClickListener(view1111 -> {
                                                                         float[] weightArray = {weight1, weight2, weight3, weight4, horrowmax};
                                                                         horrowmax = 0;
                                                                         for (float v : weightArray) {
@@ -439,7 +434,7 @@ public class pullScheme extends AppCompatActivity {
                                                                         }
                                                                         bentRow();
 
-                                                                });
+
 
                                                         });
 
@@ -566,10 +561,9 @@ public class pullScheme extends AppCompatActivity {
                                                                 weight4 = weight3;
                                                         }
 
-                                                                nextSet.setVisibility(View.INVISIBLE);
-                                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                                nextExercise.setOnClickListener(view1111 -> {
+
+
                                                                         float[] weightArray = {weight1, weight2, weight3, weight4, bentrowmax};
                                                                         bentrowmax = 0;
                                                                         for (float v : weightArray) {
@@ -577,7 +571,7 @@ public class pullScheme extends AppCompatActivity {
                                                                         }
                                                                         bentFly();
 
-                                                                });
+
 
                                                         });
 
@@ -681,10 +675,9 @@ public class pullScheme extends AppCompatActivity {
                                                                         weight4 = weight3;
                                                                 }
 
-                                                                        nextSet.setVisibility(View.INVISIBLE);
-                                                                        nextExercise.setVisibility(View.VISIBLE);
 
-                                                                        nextExercise.setOnClickListener(view1111 -> {
+
+
                                                                                 float[] weightArray = {weight1, weight2, weight3, weight4, bentflymax};
                                                                                 bentflymax = 0;
                                                                                 for (float v : weightArray) {
@@ -692,7 +685,7 @@ public class pullScheme extends AppCompatActivity {
                                                                                 }
                                                                                 bicepCurl();
 
-                                                                        });
+
 
                                                                 });
 
@@ -818,10 +811,8 @@ public class pullScheme extends AppCompatActivity {
                                                                                 weight4 = weight3;
                                                                         }
 
-                                                                                nextSet.setVisibility(View.INVISIBLE);
-                                                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                                                nextExercise.setOnClickListener(view1111 -> {
+
                                                                                         float[] weightArray = {weight1, weight2, weight3, weight4, curlmax};
                                                                                         curlmax = 0;
                                                                                         for (float v : weightArray) {
@@ -829,7 +820,7 @@ public class pullScheme extends AppCompatActivity {
                                                                                         }
                                                                                         inclineCurl();
 
-                                                                                });
+
 
                                                                         });
 
@@ -955,10 +946,9 @@ public class pullScheme extends AppCompatActivity {
                                                                                 weight4 = weight3;
                                                                         }
 
-                                                                                nextSet.setVisibility(View.INVISIBLE);
-                                                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                                                nextExercise.setOnClickListener(view1111 -> {
+
+
                                                                                         float[] weightArray = {weight1, weight2, weight3, weight4, incmax};
                                                                                         incmax = 0;
                                                                                         for (float v : weightArray) {
@@ -966,7 +956,7 @@ public class pullScheme extends AppCompatActivity {
                                                                                         }
                                                                                         preach();
 
-                                                                                });
+
 
                                                                         });
 
@@ -1068,10 +1058,9 @@ public class pullScheme extends AppCompatActivity {
                                                                                 weight4 = weight3;
                                                                         }
 
-                                                                                nextSet.setVisibility(View.INVISIBLE);
-                                                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                                                nextExercise.setOnClickListener(view1111 -> {
+
+
                                                                                         float[] weightArray = {weight1, weight2, weight3, weight4, weight5, preachmax};
                                                                                         preachmax = 0;
                                                                                         for (float v : weightArray) {
@@ -1079,7 +1068,7 @@ public class pullScheme extends AppCompatActivity {
                                                                                         }
                                                                                         shrugs();
 
-                                                                                });
+
 
                                                                         });
 
@@ -1206,10 +1195,9 @@ public class pullScheme extends AppCompatActivity {
                                                 weight4 = weight3;
                                         }
 
-                                                nextSet.setVisibility(View.INVISIBLE);
-                                                nextExercise.setVisibility(View.VISIBLE);
 
-                                                nextExercise.setOnClickListener(view1111 -> {
+
+
                                                         float[] weightArray = {weight1, weight2, weight3, weight4, weight5, shrugmax};
                                                         shrugmax = 0;
                                                         for (float v : weightArray) {
@@ -1217,7 +1205,7 @@ public class pullScheme extends AppCompatActivity {
                                                         }
                                                         running();
 
-                                                });
+
 
                                         });
 
@@ -1235,7 +1223,7 @@ public class pullScheme extends AppCompatActivity {
                                                 repsInput.setVisibility(View.INVISIBLE);
                                                 weightInput.setVisibility(View.INVISIBLE);
 
-                                                nextExercise.setOnClickListener(view -> {
+                                                nextSet.setOnClickListener(view -> {
                                                         savedata();
                                                         startActivity(new Intent(pullScheme.this, MainActivity.class));
 

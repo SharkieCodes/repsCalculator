@@ -58,8 +58,8 @@ public class legScheme extends AppCompatActivity {
             textView7.setVisibility(View.VISIBLE);
             repsInput.setVisibility(View.VISIBLE);
             weightInput.setVisibility(View.VISIBLE);
-            nextExercise.setVisibility(View.VISIBLE);
-            nextSet.setVisibility(View.INVISIBLE);
+            nextExercise.setVisibility(View.INVISIBLE);
+
 
 
             loaddata();
@@ -78,7 +78,7 @@ public class legScheme extends AppCompatActivity {
             repsInput.setVisibility(View.INVISIBLE);
             weightInput.setVisibility(View.INVISIBLE);
 
-            nextExercise.setOnClickListener(view -> squat());
+            nextSet.setOnClickListener(view -> squat());
 
         }
 
@@ -177,10 +177,9 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, squatmax};
                             squatmax = 0;
                             for (float v : weightArray) {
@@ -188,7 +187,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             squatLeft();
 
-                        });
+
 
                     });
 
@@ -315,10 +314,8 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, squatleftmax};
                             squatleftmax = 0;
                             for (float v : weightArray) {
@@ -326,7 +323,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             squatRight();
 
-                        });
+
 
                     });
 
@@ -454,10 +451,9 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, squatrightmax};
                             squatrightmax = 0;
                             for (float v : weightArray) {
@@ -465,7 +461,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             hipThrust();
 
-                        });
+
 
                     });
 
@@ -568,10 +564,9 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, hipmax};
                             hipmax = 0;
                             for (float v : weightArray) {
@@ -579,7 +574,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             legCurl();
 
-                        });
+
 
                     });
 
@@ -682,10 +677,9 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, legcurlmax};
                             legcurlmax = 0;
                             for (float v : weightArray) {
@@ -693,7 +687,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             deadlift();
 
-                        });
+
 
                     });
 
@@ -796,10 +790,7 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
                             float[] weightArray = {weight1, weight2, weight3, weight4, deadliftmax};
                             deadliftmax = 0;
                             for (float v : weightArray) {
@@ -807,7 +798,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             legExt();
 
-                        });
+
 
                     });
 
@@ -910,10 +901,7 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
                             float[] weightArray = {weight1, weight2, weight3, weight4, legextmax};
                             legextmax = 0;
                             for (float v : weightArray) {
@@ -921,7 +909,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             calfRaise();
 
-                        });
+
 
                     });
 
@@ -1048,10 +1036,7 @@ public class legScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
                             float[] weightArray = {weight1, weight2, weight3, weight4, weight5, calfmax};
                             calfmax = 0;
                             for (float v : weightArray) {
@@ -1059,7 +1044,7 @@ public class legScheme extends AppCompatActivity {
                             }
                             running();
 
-                        });
+
 
                     });
 
@@ -1077,7 +1062,7 @@ public class legScheme extends AppCompatActivity {
         repsInput.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.INVISIBLE);
 
-        nextExercise.setOnClickListener(view -> {
+        nextSet.setOnClickListener(view -> {
             savedata();
             startActivity(new Intent(legScheme.this, MainActivity.class));
 

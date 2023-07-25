@@ -18,7 +18,7 @@ import pl.droidsonroids.gif.GifImageView;
 public class pushScheme extends AppCompatActivity {
     public TextView workoutName, exerciseName, repsAmount, setsCount, textView6, textView7;
     public EditText repsInput, weightInput;
-    public Button nextExercise, nextSet;
+    public Button nextExercise, nextSet, bezetButton;
     public GifImageView exerciseGif;
     public String weightString, repsString;
     public float weight1, weight2, weight3, weight4, weight5, benchmax, crossmax, butterflymax, shouldermax, inclinemax, frontmax, pushmax, extmax;
@@ -53,13 +53,14 @@ public class pushScheme extends AppCompatActivity {
         nextSet = (Button) findViewById(R.id.nextSet);
 
 
+
         workoutName.setText("Push Workout");
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.VISIBLE);
-        nextSet.setVisibility(View.INVISIBLE);
+        nextExercise.setVisibility(View.INVISIBLE);
+        nextSet.setVisibility(View.VISIBLE);
 
 
         loaddata();
@@ -77,7 +78,7 @@ public class pushScheme extends AppCompatActivity {
         repsInput.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.INVISIBLE);
 
-        nextExercise.setOnClickListener(view -> benchpress());
+        nextSet.setOnClickListener(view -> benchpress());
 
     }
 
@@ -93,6 +94,9 @@ public class pushScheme extends AppCompatActivity {
         nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(benchmax));
+
+
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -149,7 +153,6 @@ public class pushScheme extends AppCompatActivity {
                 setsCount.setText("3 of 3");
                 weightInput.setText(String.valueOf(weight3));
 
-
                 nextSet.setOnClickListener(view11 -> {
                     if (TextUtils.isEmpty(weightInput.getText().toString())) {
                         weightInput.setError("Fill in the weight you used.");
@@ -176,18 +179,14 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
-
-                        nextExercise.setOnClickListener(view1111 -> {
-                            float[] weightArray = {weight1, weight2, weight3, weight4, benchmax};
+                    float[] weightArray = {weight1, weight2, weight3, weight4, benchmax};
                             benchmax = 0;
                             for (float v : weightArray) {
                                 benchmax = Math.max(benchmax, v);
                             }
                             cross();
 
-                        });
+
 
                     });
 
@@ -289,10 +288,10 @@ public class pushScheme extends AppCompatActivity {
                     else{
                         weight4 = weight3;
                     }
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
+                    //nextSet.setVisibility(View.INVISIBLE);
+                    //nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, crossmax};
                             crossmax = 0;
                             for (float v : weightArray) {
@@ -300,7 +299,7 @@ public class pushScheme extends AppCompatActivity {
                             }
                             butterfly();
 
-                        });
+
 
                     });
 
@@ -427,10 +426,9 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, butterflymax};
                             butterflymax = 0;
                             for (float v : weightArray) {
@@ -438,7 +436,7 @@ public class pushScheme extends AppCompatActivity {
                             }
                             shoulderPress();
 
-                        });
+
 
                     });
 
@@ -566,10 +564,10 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, shouldermax};
                             shouldermax = 0;
                             for (float v : weightArray) {
@@ -577,7 +575,7 @@ public class pushScheme extends AppCompatActivity {
                             }
                             inclinePress();
 
-                        });
+
 
                     });
 
@@ -704,10 +702,10 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, inclinemax};
                             inclinemax = 0;
                             for (float v : weightArray) {
@@ -715,7 +713,7 @@ public class pushScheme extends AppCompatActivity {
                             }
                             frontRaise();
 
-                        });
+
 
                     });
 
@@ -843,10 +841,9 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, frontmax};
                             frontmax = 0;
                             for (float v : weightArray) {
@@ -854,7 +851,7 @@ public class pushScheme extends AppCompatActivity {
                             }
                             tricepPush();
 
-                        });
+
 
                     });
 
@@ -958,10 +955,10 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
+                        nextSet.setOnClickListener(view1111 -> {
                             float[] weightArray = {weight1, weight2, weight3, weight4, pushmax};
                             pushmax = 0;
                             for (float v : weightArray) {
@@ -1072,10 +1069,9 @@ public class pushScheme extends AppCompatActivity {
                         weight4 = weight3;
                     }
 
-                        nextSet.setVisibility(View.INVISIBLE);
-                        nextExercise.setVisibility(View.VISIBLE);
 
-                        nextExercise.setOnClickListener(view1111 -> {
+
+
                             float[] weightArray = {weight1, weight2, weight3, weight4, extmax};
                             extmax = 0;
                             for (float v : weightArray) {
@@ -1083,7 +1079,7 @@ public class pushScheme extends AppCompatActivity {
                             }
                             running();
 
-                        });
+
 
                     });
 
@@ -1102,7 +1098,7 @@ public class pushScheme extends AppCompatActivity {
         repsInput.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.INVISIBLE);
 
-        nextExercise.setOnClickListener(view -> {
+        nextSet.setOnClickListener(view -> {
             savedata();
             startActivity(new Intent(pushScheme.this, MainActivity.class));
 
