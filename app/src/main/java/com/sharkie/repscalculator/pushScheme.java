@@ -18,11 +18,12 @@ import pl.droidsonroids.gif.GifImageView;
 public class pushScheme extends AppCompatActivity {
     public TextView workoutName, exerciseName, repsAmount, setsCount, textView6, textView7;
     public EditText repsInput, weightInput;
-    public Button nextExercise, nextSet, bezetButton;
+    public Button nextSet, bezetButton;
     public GifImageView exerciseGif;
     public String weightString, repsString;
     public float weight1, weight2, weight3, weight4, weight5, benchmax, crossmax, butterflymax, shouldermax, inclinemax, frontmax, pushmax, extmax;
     public int reps;
+    public boolean benchBezet, crossBezet, butterflyBezet, shoulderBezet, inclineBezet, frontBezet, pushBezet, extBezet;
 
 
     public static final String SHARED_PREFS = "sharedPrefs";
@@ -48,9 +49,9 @@ public class pushScheme extends AppCompatActivity {
         textView7 = findViewById(R.id.textView7);
         repsInput = findViewById(R.id.repsInput);
         weightInput = findViewById(R.id.weightInput);
-        nextExercise = (Button) findViewById(R.id.nextExercise);
         exerciseGif = findViewById(R.id.exerciseGif);
         nextSet = (Button) findViewById(R.id.nextSet);
+        bezetButton = (Button) findViewById(R.id.bezetButton);
 
 
 
@@ -59,8 +60,8 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
+
 
 
         loaddata();
@@ -77,6 +78,7 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.INVISIBLE);
         repsInput.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
 
         nextSet.setOnClickListener(view -> benchpress());
 
@@ -85,17 +87,23 @@ public class pushScheme extends AppCompatActivity {
     public void benchpress(){
         exerciseName.setText("Benchpress");
         exerciseGif.setImageResource(R.drawable.benchpress);
-        repsAmount.setText("10-12");
+        repsAmount.setText("6-8");
         setsCount.setText("1 of 3");
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(benchmax));
+        if (!benchBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
 
-
+        bezetButton.setOnClickListener(view -> {
+            benchBezet = true;
+            cross();
+        });
 
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
@@ -112,11 +120,11 @@ public class pushScheme extends AppCompatActivity {
             repsString = String.valueOf(repsInput.getText());
             reps = Integer.parseInt(repsString);
 
-            if (reps > 12) {
+            if (reps > 8) {
                 weight2 = (float) (weight1 + 5);
             }
 
-            else if (reps < 10) {
+            else if (reps < 6) {
                 weight2 = (float) (weight1 - 5);
             }
             else {
@@ -140,11 +148,11 @@ public class pushScheme extends AppCompatActivity {
                 repsString = String.valueOf(repsInput.getText());
                 reps = Integer.parseInt(repsString);
 
-                if (reps > 12) {
+                if (reps > 8) {
                     weight3 = (float) (weight2 + 5);
                 }
 
-                else if (reps < 10) {
+                else if (reps < 6) {
                     weight3 = (float) (weight2 - 5);
                 }
                 else {
@@ -168,11 +176,11 @@ public class pushScheme extends AppCompatActivity {
                     repsString = String.valueOf(repsInput.getText());
                     reps = Integer.parseInt(repsString);
 
-                    if (reps > 12) {
+                    if (reps > 8) {
                         weight4 = (float) (weight3 + 5);
                     }
 
-                    else if (reps < 10) {
+                    else if (reps < 6) {
                         weight4 = (float) (weight3 - 5);
                     }
                     else {
@@ -184,7 +192,11 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 benchmax = Math.max(benchmax, v);
                             }
-                            cross();
+                            if (benchBezet){
+                                benchBezet = false;
+                                bezet();
+                            }
+                            else{ cross();}
 
 
 
@@ -203,9 +215,19 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(crossmax));
+
+        if (!crossBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            crossBezet = true;
+            butterfly();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -288,8 +310,7 @@ public class pushScheme extends AppCompatActivity {
                     else{
                         weight4 = weight3;
                     }
-                    //nextSet.setVisibility(View.INVISIBLE);
-                    //nextExercise.setVisibility(View.VISIBLE);
+
 
 
                             float[] weightArray = {weight1, weight2, weight3, weight4, crossmax};
@@ -297,8 +318,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 crossmax = Math.max(crossmax, v);
                             }
-                            butterfly();
-
+                            if (crossBezet){
+                                crossBezet = false;
+                                bezet();
+                            }
+                            else {
+                                butterfly();
+                            }
 
 
                     });
@@ -315,10 +341,20 @@ public class pushScheme extends AppCompatActivity {
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(butterflymax));
+
+        if (!butterflyBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            butterflyBezet = true;
+            shoulderPress();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -434,8 +470,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 butterflymax = Math.max(butterflymax, v);
                             }
-                            shoulderPress();
-
+                            if (butterflyBezet){
+                                butterflyBezet = false;
+                                bezet();
+                            }
+                            else {
+                                shoulderPress();
+                            }
 
 
                     });
@@ -454,9 +495,19 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(shouldermax));
+
+        if (!shoulderBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            shoulderBezet = true;
+            inclinePress();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -573,8 +624,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 shouldermax = Math.max(shouldermax, v);
                             }
-                            inclinePress();
-
+                            if (shoulderBezet) {
+                                shoulderBezet = false;
+                                bezet();
+                            }
+                            else {
+                                inclinePress();
+                            }
 
 
                     });
@@ -592,9 +648,19 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(inclinemax));
+
+        if (!inclineBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            inclineBezet = true;
+            frontRaise();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -711,8 +777,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 inclinemax = Math.max(inclinemax, v);
                             }
-                            frontRaise();
-
+                            if (inclineBezet) {
+                                inclineBezet = false;
+                                bezet();
+                            }
+                            else {
+                                frontRaise();
+                            }
 
 
                     });
@@ -731,9 +802,19 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(frontmax));
+
+        if (!frontBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            frontBezet = true;
+            tricepPush();
+                });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -849,8 +930,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 frontmax = Math.max(frontmax, v);
                             }
-                            tricepPush();
-
+                            if (frontBezet){
+                                frontBezet = false;
+                                bezet();
+                            }
+                            else {
+                                tricepPush();
+                            }
 
 
                     });
@@ -869,9 +955,19 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(pushmax));
+
+        if (!pushBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            pushBezet = true;
+            tricepExt();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -964,8 +1060,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 pushmax = Math.max(pushmax, v);
                             }
-                            tricepExt();
-
+                            if (pushBezet) {
+                                pushBezet = false;
+                                bezet();
+                            }
+                            else {
+                                tricepExt();
+                            }
                         });
 
                     });
@@ -983,9 +1084,19 @@ public class pushScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(extmax));
+
+        if (!extBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            extBezet = true;
+            bezet();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -1077,8 +1188,13 @@ public class pushScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 extmax = Math.max(extmax, v);
                             }
-                            running();
-
+                            if (extBezet) {
+                                extBezet = false;
+                                bezet();
+                            }
+                            else {
+                                bezet();
+                            }
 
 
                     });
@@ -1088,6 +1204,37 @@ public class pushScheme extends AppCompatActivity {
         };
 
 
+    public void bezet(){
+        if (benchBezet) {
+            benchpress();
+        }
+        else if (crossBezet){
+            cross();
+        }
+        else if (butterflyBezet){
+            butterfly();
+        }
+        else if (shoulderBezet){
+            shoulderPress();
+        }
+        else if (inclineBezet){
+            inclinePress();
+        }
+        else if (frontBezet){
+            frontRaise();
+        }
+        else if (pushBezet){
+            tricepPush();
+        }
+        else if (extBezet){
+            tricepExt();
+        }
+        else if (!benchBezet && !crossBezet && !butterflyBezet && !shoulderBezet && !inclineBezet && !frontBezet && !pushBezet && !extBezet)
+        {
+            running();
+        }
+    }
+
     public void running(){
         exerciseName.setText("threadmill");
         exerciseGif.setImageResource(R.drawable.running);
@@ -1095,6 +1242,7 @@ public class pushScheme extends AppCompatActivity {
         setsCount.setText("5 min");
         textView6.setVisibility(View.INVISIBLE);
         textView7.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         repsInput.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.INVISIBLE);
 

@@ -18,11 +18,12 @@ public class legScheme extends AppCompatActivity {
 
         public TextView workoutName, exerciseName, repsAmount, setsCount, textView6, textView7;
         public EditText repsInput, weightInput;
-        public Button nextExercise, nextSet;
+        public Button nextSet, bezetButton;
         public GifImageView exerciseGif;
         public String weightString, repsString;
         public float weight1, weight2, weight3,weight4, weight5, squatmax, squatleftmax, squatrightmax, hipmax, legcurlmax, deadliftmax, legextmax, calfmax;
         public int reps;
+        public boolean squatBezet, bulgBezet, hipBezet, legcurlBezet, liftBezet, legextBezet, calfBezet;
 
 
         public static final String SHARED_PREFS = "sharedPrefs";
@@ -48,9 +49,9 @@ public class legScheme extends AppCompatActivity {
             textView7 = findViewById(R.id.textView7);
             repsInput = findViewById(R.id.repsInput);
             weightInput = findViewById(R.id.weightInput);
-            nextExercise = (Button) findViewById(R.id.nextExercise);
             exerciseGif = findViewById(R.id.exerciseGif);
             nextSet = (Button) findViewById(R.id.nextSet);
+            bezetButton = (Button) findViewById(R.id.bezetButton);
 
 
             workoutName.setText("Leg Workout");
@@ -58,8 +59,6 @@ public class legScheme extends AppCompatActivity {
             textView7.setVisibility(View.VISIBLE);
             repsInput.setVisibility(View.VISIBLE);
             weightInput.setVisibility(View.VISIBLE);
-            nextExercise.setVisibility(View.INVISIBLE);
-
 
 
             loaddata();
@@ -75,6 +74,7 @@ public class legScheme extends AppCompatActivity {
             setsCount.setText("5 min");
             textView6.setVisibility(View.INVISIBLE);
             textView7.setVisibility(View.INVISIBLE);
+            bezetButton.setVisibility(View.INVISIBLE);
             repsInput.setVisibility(View.INVISIBLE);
             weightInput.setVisibility(View.INVISIBLE);
 
@@ -91,10 +91,19 @@ public class legScheme extends AppCompatActivity {
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(squatmax));
+
+        if(!squatBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+        bezetButton.setOnClickListener(view -> {
+            squatBezet = true;
+            squatLeft();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -185,8 +194,14 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 squatmax = Math.max(squatmax, v);
                             }
-                            squatLeft();
+                            if(squatBezet){
+                                squatBezet = false;
+                                bezet();
+                            }
+                            else {
 
+                                squatLeft();
+                            }
 
 
                     });
@@ -204,9 +219,18 @@ public class legScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(squatleftmax));
+
+        if (!bulgBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+        bezetButton.setOnClickListener(view -> {
+            bulgBezet = true;
+            hipThrust();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -321,8 +345,12 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 squatleftmax = Math.max(squatleftmax, v);
                             }
-                            squatRight();
-
+                            if(bulgBezet){
+                                squatRight();
+                            }
+                            else {
+                                squatRight();
+                            }
 
 
                     });
@@ -341,7 +369,7 @@ public class legScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(squatrightmax));
         nextSet.setOnClickListener(view -> {
@@ -459,8 +487,13 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 squatrightmax = Math.max(squatrightmax, v);
                             }
-                            hipThrust();
-
+                            if (bulgBezet){
+                                bulgBezet = false;
+                                bezet();
+                            }
+                            else {
+                                hipThrust();
+                            }
 
 
                     });
@@ -477,10 +510,20 @@ public class legScheme extends AppCompatActivity {
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(hipmax));
+
+        if(!hipBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            hipBezet = true;
+            legCurl();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -572,8 +615,13 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 hipmax = Math.max(hipmax, v);
                             }
-                            legCurl();
-
+                            if (hipBezet){
+                                hipBezet = false;
+                                bezet();
+                            }
+                            else {
+                                legCurl();
+                            }
 
 
                     });
@@ -591,9 +639,19 @@ public class legScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(legcurlmax));
+
+        if(!legcurlBezet) {
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            legcurlBezet = true;
+            deadlift();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -685,8 +743,13 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 legcurlmax = Math.max(legcurlmax, v);
                             }
-                            deadlift();
-
+                            if (legcurlBezet){
+                                legcurlBezet = false;
+                                bezet();
+                            }
+                            else {
+                                deadlift();
+                            }
 
 
                     });
@@ -704,9 +767,19 @@ public class legScheme extends AppCompatActivity {
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(deadliftmax));
+
+        if (!liftBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+
+        bezetButton.setOnClickListener(view -> {
+            liftBezet = true;
+            legExt();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -796,8 +869,13 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 deadliftmax = Math.max(deadliftmax, v);
                             }
-                            legExt();
-
+                            if(liftBezet){
+                                liftBezet = false;
+                                bezet();
+                            }
+                            else {
+                                legExt();
+                            }
 
 
                     });
@@ -814,10 +892,19 @@ public class legScheme extends AppCompatActivity {
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
         repsInput.setVisibility(View.VISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(legextmax));
+
+        if(!legextBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+        bezetButton.setOnClickListener(view -> {
+            legextBezet = true;
+            calfRaise();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -907,8 +994,13 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 legextmax = Math.max(legextmax, v);
                             }
-                            calfRaise();
-
+                            if (legextBezet) {
+                                legextBezet = false;
+                                bezet();
+                            }
+                            else {
+                                calfRaise();
+                            }
 
 
                     });
@@ -924,11 +1016,20 @@ public class legScheme extends AppCompatActivity {
         setsCount.setText("1 of 3");
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         repsInput.setVisibility(View.VISIBLE);
         weightInput.setVisibility(View.VISIBLE);
-        nextExercise.setVisibility(View.INVISIBLE);
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(calfmax));
+
+        if (!calfBezet){
+            bezetButton.setVisibility(View.VISIBLE);
+        }
+        bezetButton.setOnClickListener(view -> {
+            calfBezet = true;
+            bezet();
+        });
+
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -1042,7 +1143,12 @@ public class legScheme extends AppCompatActivity {
                             for (float v : weightArray) {
                                 calfmax = Math.max(calfmax, v);
                             }
-                            running();
+                            if (calfBezet){
+                                calfBezet = false;
+                                bezet();
+                            }
+                            else{bezet();}
+
 
 
 
@@ -1052,6 +1158,35 @@ public class legScheme extends AppCompatActivity {
             });
         };
 
+
+
+
+    public void bezet(){
+        if (squatBezet){
+            squat();
+        }
+        else if(bulgBezet){
+            squatLeft();
+        }
+        else if (hipBezet){
+            hipThrust();
+        }
+        else if (legcurlBezet){
+            legCurl();
+        }
+        else if (liftBezet){
+            deadlift();
+        }
+        else if (legextBezet){
+            legExt();
+        }
+        else if (calfBezet){
+            calfRaise();
+        }
+        else if (!squatBezet && !bulgBezet && !hipBezet && !legcurlBezet && !liftBezet && !legextBezet && !calfBezet){
+            running();
+        }
+    }
     public void running(){
         exerciseName.setText("threadmill");
         exerciseGif.setImageResource(R.drawable.running);
