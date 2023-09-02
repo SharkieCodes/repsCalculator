@@ -1215,6 +1215,7 @@ public void legpress(){
         textView6.setVisibility(View.INVISIBLE);
         textView7.setVisibility(View.INVISIBLE);
         repsInput.setVisibility(View.INVISIBLE);
+        bezetButton.setVisibility(View.INVISIBLE);
         weightInput.setVisibility(View.INVISIBLE);
 
         nextSet.setOnClickListener(view -> {
