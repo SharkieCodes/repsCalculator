@@ -21,7 +21,7 @@ public class pushScheme extends AppCompatActivity {
     public Button nextSet, bezetButton;
     public GifImageView exerciseGif;
     public String weightString, repsString;
-    public float weight1, weight2, weight3, weight4, weight5, benchmax, crossmax, butterflymax, shouldermax, inclinemax, frontmax, pushmax, extmax;
+    public float weight1, weight2, weight3, weight4, benchmax, crossmax, butterflymax, shouldermax, inclinemax, frontmax, pushmax, extmax;
     public int reps;
     public boolean benchBezet, crossBezet, butterflyBezet, shoulderBezet, inclineBezet, frontBezet, pushBezet, extBezet;
 
@@ -85,9 +85,9 @@ public class pushScheme extends AppCompatActivity {
     }
 
     public void benchpress(){
-        exerciseName.setText("Benchpress");
-        exerciseGif.setImageResource(R.drawable.benchpress);
-        repsAmount.setText("6-8");
+        exerciseName.setText("DB Benchpress");
+        exerciseGif.setImageResource(R.drawable.dbbenchpress);
+        repsAmount.setText("10-12");
         setsCount.setText("1 of 3");
         textView6.setVisibility(View.VISIBLE);
         textView7.setVisibility(View.VISIBLE);
@@ -114,18 +114,25 @@ public class pushScheme extends AppCompatActivity {
                 repsInput.setError("Fill in the amount of reps you did");
                 return;
             }
-
             weightString = String.valueOf(weightInput.getText());
             weight1 = Float.parseFloat(weightString);
             repsString = String.valueOf(repsInput.getText());
             reps = Integer.parseInt(repsString);
 
-            if (reps > 8) {
-                weight2 = (float) (weight1 + 5);
+            if (reps > 12 && weight1 >=10) {
+                weight2 = (float) (weight1 + 2);
             }
 
-            else if (reps < 6) {
-                weight2 = (float) (weight1 - 5);
+            else if (reps < 10 && weight1 >=12) {
+                weight2 = (float) (weight1 - 2);
+            }
+
+            else  if (reps > 12 && weight1 <10){
+                weight2 = (float) (weight1 + 1);
+            }
+
+            else  if (reps < 10 && weight1 <= 10){
+                weight2 = (float) (weight1 - 1);
             }
             else {
                 weight2 = weight1;
@@ -148,18 +155,27 @@ public class pushScheme extends AppCompatActivity {
                 repsString = String.valueOf(repsInput.getText());
                 reps = Integer.parseInt(repsString);
 
-                if (reps > 8) {
-                    weight3 = (float) (weight2 + 5);
+                if (reps > 12 && weight2 >=10) {
+                    weight3 = (float) (weight2 + 2);
                 }
 
-                else if (reps < 6) {
-                    weight3 = (float) (weight2 - 5);
+                else if (reps < 10 && weight2 >=12) {
+                    weight3 = (float) (weight2 - 2);
                 }
-                else {
+
+                else if (reps > 12 && weight2 <10){
+                    weight3 = (float) (weight2 + 1);
+                }
+
+                else if (reps < 10 && weight2 <= 10){
+                    weight3 = (float) (weight2 - 1);
+                }
+                else{
                     weight3 = weight2;
                 }
                 setsCount.setText("3 of 3");
                 weightInput.setText(String.valueOf(weight3));
+
 
                 nextSet.setOnClickListener(view11 -> {
                     if (TextUtils.isEmpty(weightInput.getText().toString())) {
@@ -176,12 +192,20 @@ public class pushScheme extends AppCompatActivity {
                     repsString = String.valueOf(repsInput.getText());
                     reps = Integer.parseInt(repsString);
 
-                    if (reps > 8) {
-                        weight4 = (float) (weight3 + 5);
+                    if (reps > 12 && weight3 >=10) {
+                        weight4 = (float) (weight3 + 2);
                     }
 
-                    else if (reps < 6) {
-                        weight4 = (float) (weight3 - 5);
+                    else if (reps < 10 && weight3 >=12) {
+                        weight4 = (float) (weight3 - 2);
+                    }
+
+                    else if (reps > 12 && weight3 <10){
+                        weight4 = (float) (weight3 + 1);
+                    }
+
+                    else if (reps < 10 && weight3 <= 10){
+                        weight4 = (float) (weight3 - 1);
                     }
                     else {
                         weight4 = weight3;
@@ -204,7 +228,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
     public void cross(){
         exerciseName.setText("Crossover");
@@ -331,7 +355,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
     public void butterfly(){
         exerciseName.setText("Butterfly");
@@ -483,12 +507,12 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
 
     public void shoulderPress(){
-        exerciseName.setText("Overhead shoulder press");
-        exerciseGif.setImageResource(R.drawable.shoulderpress);
+        exerciseName.setText("Overhead shoulder press seated");
+        exerciseGif.setImageResource(R.drawable.shoulderpressdb);
         repsAmount.setText("10-12");
         setsCount.setText("1 of 3");
         textView6.setVisibility(View.VISIBLE);
@@ -637,7 +661,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
     public void inclinePress(){
         exerciseName.setText("Incline DB press");
@@ -790,7 +814,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
 
     public void frontRaise(){
@@ -943,7 +967,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
 
     public void tricepPush(){
@@ -1073,7 +1097,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
     public void tricepExt(){
         exerciseName.setText("Tricep extension");
@@ -1201,7 +1225,7 @@ public class pushScheme extends AppCompatActivity {
 
                 });
             });
-        };
+        }
 
 
     public void bezet(){
