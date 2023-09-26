@@ -42,6 +42,9 @@ public class legScheme extends AppCompatActivity {
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
+            //alle begin waardes goedzetten
+
             setContentView(R.layout.workoutlayout);
             workoutName = findViewById(R.id.workoutName);
             exerciseName = findViewById(R.id.exerciseName);
@@ -70,6 +73,9 @@ public class legScheme extends AppCompatActivity {
 
 
         public void rowing(){
+
+            //veranderd alleen de textviews en de GIF
+
             exerciseName.setText("Rowing machine");
             exerciseGif.setImageResource(R.drawable.rowing);
             repsAmount.setText("5 min");
@@ -86,6 +92,7 @@ public class legScheme extends AppCompatActivity {
 
 
     public void squat(){
+            //veranderd de textviews en GIF
         exerciseName.setText("Squat");
         exerciseGif.setImageResource(R.drawable.barbellsquat);
         repsAmount.setText("6-8");
@@ -98,6 +105,8 @@ public class legScheme extends AppCompatActivity {
         nextSet.setVisibility(View.VISIBLE);
         weightInput.setText(String.valueOf(squatmax));
 
+        //als bezet is word hij naar het einde verplaatst
+
         if(!squatBezet){
             bezetButton.setVisibility(View.VISIBLE);
         }
@@ -106,6 +115,7 @@ public class legScheme extends AppCompatActivity {
             legpress();
         });
 
+        //checken of alles is ingevuld
         nextSet.setOnClickListener(view -> {
             if (TextUtils.isEmpty(weightInput.getText().toString())) {
                 weightInput.setError("Fill in the weight you used.");
@@ -115,6 +125,8 @@ public class legScheme extends AppCompatActivity {
                 repsInput.setError("Fill in the amount of reps you did");
                 return;
             }
+
+            //pakt alle waardes en kijkt of die <6, >8 of tussen 6-8 liggen
 
             weightString = String.valueOf(weightInput.getText());
             weight1 = Float.parseFloat(weightString);
@@ -142,7 +154,7 @@ public class legScheme extends AppCompatActivity {
                     repsInput.setError("Fill in the amount of reps you did");
                     return;
                 }
-
+//pakt alle waardes en kijkt of die <6, >8 of tussen 6-8 liggen
                 weightString = String.valueOf(weightInput.getText());
                 weight2 = Float.parseFloat(weightString);
                 repsString = String.valueOf(repsInput.getText());
@@ -171,7 +183,7 @@ public class legScheme extends AppCompatActivity {
                         repsInput.setError("Fill in the amount of reps you did");
                         return;
                     }
-
+//pakt alle waardes en kijkt of die <6, >8 of tussen 6-8 liggen
                     weightString = String.valueOf(weightInput.getText());
                     weight3 = Float.parseFloat(weightString);
                     repsString = String.valueOf(repsInput.getText());
@@ -190,7 +202,7 @@ public class legScheme extends AppCompatActivity {
 
 
 
-
+//pakt de maximale waarde voor het gewicht voor deze oefening en slaat die op
                             float[] weightArray = {weight1, weight2, weight3, weight4, squatmax};
                             squatmax = 0;
                             for (float v : weightArray) {
@@ -1180,7 +1192,7 @@ public void legpress(){
 
 
 
-
+//controleerd welke oefeningen bezet waren en doet deze
     public void bezet(){
         if (squatBezet){
             squat();
@@ -1227,6 +1239,8 @@ public void legpress(){
 
 
     public void savedata() {
+            //slaat alle maximale waardes voor de gewichten op
+
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -1243,6 +1257,8 @@ public void legpress(){
     }
 
     public void loaddata(){
+            //laad alle maximum waardes en slaat ze op in een var
+
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         squatmax = sharedPreferences.getFloat(SQUATMAX,squatmax);
         squatleftmax = sharedPreferences.getFloat(SQUATLEFTMAX,squatleftmax);

@@ -16,6 +16,10 @@ import pl.droidsonroids.gif.GifImageView;
 
 @SuppressLint("SetTextI18n")
 public class pushScheme extends AppCompatActivity {
+
+    /*
+    weer precies dezelfde layout als pull- en legscheme.java
+     */
     public TextView workoutName, exerciseName, repsAmount, setsCount, textView6, textView7;
     public EditText repsInput, weightInput;
     public Button nextSet, bezetButton;

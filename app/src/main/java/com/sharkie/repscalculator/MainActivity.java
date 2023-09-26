@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         workoutButton = (ImageButton) findViewById(R.id.workoutButton);
         weightButton = (ImageButton) findViewById(R.id.weightButton);
 
-
-
-
         workoutButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, workout.class)));
 
         weightButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, weight.class)));}}

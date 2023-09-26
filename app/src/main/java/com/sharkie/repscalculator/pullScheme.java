@@ -14,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import pl.droidsonroids.gif.GifImageView;
 @SuppressLint("SetTextI18n")
 public class pullScheme extends AppCompatActivity {
-
+/*
+precies hetzelfde als legscheme.java
+ */
         public TextView workoutName, exerciseName, repsAmount, setsCount, textView6, textView7;
         public EditText repsInput, weightInput;
         public Button nextSet, bezetButton;

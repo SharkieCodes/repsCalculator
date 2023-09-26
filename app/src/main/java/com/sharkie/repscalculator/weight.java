@@ -43,10 +43,10 @@ public class weight extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-                // Load previously saved numbers
+                // Laad de vorige nummers
                 numbersList = appDatabase.numberDao().getAll();
 
-                // Set click listener for the save button
+                // Kijk of de opsla knop ingedrukt wordt
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -54,7 +54,7 @@ public class weight extends AppCompatActivity {
                     }
                 });
 
-                // Display the numbers
+
                 displayNumbers();
             }
 
@@ -64,19 +64,15 @@ public class weight extends AppCompatActivity {
                 float fatNum = Float.parseFloat(fatInput.getText().toString());
                 float muscleNum = Float.parseFloat(muscleInput.getText().toString());
 
-                // Create a new NumberEntity object
+
                 numberEntity numberEntity = new numberEntity(weightNum, fatNum, muscleNum);
 
-                // Insert the numbers into the database
                 appDatabase.numberDao().insert(numberEntity);
 
-                // Add the numbers to the list
                 numbersList.add(numberEntity);
 
-                // Display the numbers
                 displayNumbers();
 
-                // Clear the EditText
                 weightInputs.getText().clear();
                 fatInput.getText().clear();
                 muscleInput.getText().clear();
@@ -86,7 +82,7 @@ public class weight extends AppCompatActivity {
                 StringBuilder builder = new StringBuilder();
                 LocalDate currentDate = LocalDate.now();
                 String currentDates = currentDate.format(DateTimeFormatter.ofPattern("MM/dd"));
-                // Append each set of numbers to the StringBuilder
+                // alle nummers naar string omzetten
 
 
 
@@ -116,7 +112,7 @@ public class weight extends AppCompatActivity {
 
                 }
 
-                // Set the TextView text
+
                 displayTextView.setText(builder.toString());
             }
         }
